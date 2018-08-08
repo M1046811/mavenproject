@@ -1,0 +1,48 @@
+<!DOCTYPE HTML>
+<HTML>
+<HEAD>
+<title>Display Match Details</title>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<script>
+$(document).ready(function(){
+    $("button").click(function(){
+	var tname = $('#tname').val();
+	//console.log(tname);
+	  $.ajax({
+		type:"GET",
+		//contentType:"application/json",
+		//dataType:'JSON',
+		url: "http://localhost:8080/display?tname="+tname,
+		//data: $('#form1').serialize(),
+		
+		success:function(result){
+		//var display=JSON.parse(r);
+		//console.log(display);
+		$("#div2").html("");
+		for(var i=0;i<result.length;i++)
+		{
+		$("#div2").append('<h3>'+result[i].matchDate+'-----'+result[i].opp+'-----'+result[i].firstTeamScore+'-----'+result[i].secondTeamScore+'</>');
+		}
+            //$("#display_info").text(li[0].firstTeamScore/*"<a href='C:\\Users\\M1046811\\Desktop\\FootballApplication.html'>back</a>"*/);
+           //$("#div1").html(result);
+        }})
+		});
+		});
+</script>
+</HEAD>
+<body>
+<div id="res">
+<form id="form1">
+<h1>DisplayMatchDetails</h1>
+<br>
+	Enter Team Name:<br>
+	<input type="text" id="tname" name="tname">
+	<button type="button" >Submit</button>
+	</form>
+	
+</div>
+<div id="div2">
+</div>
+
+</body>
+</HTML>

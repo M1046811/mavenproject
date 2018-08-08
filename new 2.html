@@ -1,0 +1,38 @@
+<!DOCTYPE HTML>
+<HTML>
+<head>
+<title>Ajax Application</title>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<script>
+$(document).ready(function(){
+    $("button").click(function(){
+	var abc={};
+	abc["fnum"]=$("#fnum").val();
+	abc["snum"]=$("#snum").val();
+	alert(abc["fnum"]);
+        $.ajax({
+		type:"POST",
+		contentType:"application/json",
+		dataType:'JSON',
+		url: "http://localhost:8080/admin",
+		data: JSON.stringify(abc)
+		success: function(sum){
+            $("#res").html(sum);
+        }});
+    });
+});
+</script>
+</head>
+<body>
+<div id="res">
+  First Number:<br>
+  <input type="text" id="fnum">
+  <br>
+  Second Number:<br>
+  <input type="text" id="snum">
+  <br>
+  <br>
+  <button>ADD</button>
+  </div>
+</body>
+</HTML>

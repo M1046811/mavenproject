@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html>
+<head>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<script>
+$(document).ready(function(){
+    $("button").click(function(){
+//	var add={}
+	//add["ftname"]=$("#ftname").val(),
+	//add["stname"]=$("#stname").val(),
+	//add["date"]=$("#date").val(),
+//	add["fgoals"]=$("#fgoals").val(),
+//	add["sgoals"]=$("#sgoals").val(),
+	alert($("#form1").serialize());
+//console.log('check',$("#form").serialize())
+        $.ajax({
+		type:"POST",
+		//contentType:"application/json",
+		//dataType:'JSON',
+		url: "http://localhost:8080/addplayer",
+		data: $("#form1").serialize(),
+		success: function(n){
+		console.log('check2');
+		alert("Details Inserted");
+            $("#res").html("<a href='C:\\Users\\M1046811\\Desktop\\FootballApplication.html'>back</a>");
+            //$("#div1").html(result);
+        }});
+    });
+});
+</script>
+</head>
+<body>
+
+<div id="res">
+<form id="form1">
+<h1>Add Match Details</h1>
+<br>
+	Enter 1st Team Name:<br>
+	<input type="text" id="ftname" name="ftname">
+	<br>
+	Enter 2nd Team Name:<br>
+	<input type="text" id="stname" name="stname">
+	<br>
+	Enter Match Date in dd-mm-yyyy hh:mm:ss:
+	<br>
+	<input type="text" id="date" name="date">
+	<br>
+	Enter Goals score by 1st Team:
+	<br>
+	<input type="text" id="fgoals" name="fgoals">
+	<br>
+	Enter Goals score by 2nd Team:
+	<br>
+	<input type="text" id="sgoals" name="sgoals">
+	<br>
+	<button id="submit_button">SUBMIT</button>
+	</form>
+</div>
+</body>
+</html>

@@ -1,0 +1,59 @@
+<!DOCTYPE HTML>
+<HTML>
+<head>
+<title>Add Match Details</title>
+<script>
+$(document).ready(function(){
+    $("button").click(function(){
+	var add={}
+	add["ftname"]=$("#ftname").val();
+	add["stname"]=$("#stname").val();
+	add["date"]=$("#date").val();
+	add["fgoals"]=$("#fgoals").val();
+	add["sgoals"]=$("#sgoals").val();
+        $.ajax({
+		type:"POST",
+		contentType:"application/json",
+		dataType:'JSON',
+		url: "http://localhost:8080/admin",
+		data: JSON.stringify(add),
+		success: function(a){
+		console.log(a);
+		alert("Details Inserted");
+            $("#res").html(FootballApplication.html);
+        }});
+    });
+});
+</sript>
+</head>
+<body>
+<div id="res">
+<h1>Add Match Details</h1>
+<br>
+	Enter 1st Team Name:<br>
+	<input type="text" id="ftname">
+	<br>
+	Enter 2nd Team Name:<br>
+	<input type="text" id="stname">
+	<br>
+	Enter Match Date in dd-mm-yyyy hh:mm:ss:
+	<br>
+	<input type="text" id="date">
+	<br>
+	Enter Goals score by 1st Team:
+	<br>
+	<input type="text" id="fgoals">
+	<br>
+	Enter Goals score by 2nd Team:
+	<br>
+	<input type="text" id="sgoals">
+	<br>
+	<button>SUBMIT</button>
+</div>
+<div id=s1></div>
+<div id=s2></div>
+<div id=s3></div>
+<div id=s4></div>
+
+</body>
+</HTML>
